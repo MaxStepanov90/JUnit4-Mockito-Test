@@ -23,4 +23,9 @@ public class UserDaoImpl implements UserDao {
         return users.stream().filter(user -> user.getUsername().equals(username))
                 .findAny().orElse(null);
     }
+
+    @Override
+    public List<User> findAllUsers() {
+        return users;
+    }
 }

@@ -4,6 +4,8 @@ import model.User;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class UserDaoTest {
@@ -24,7 +26,14 @@ public class UserDaoTest {
 
     @Test
     public void getUserByUserName_Null_user() throws Exception {
-         User alex = userDao.getUserByUserName("alex@gmail.com");
-         assertThat(alex).isNull();
+        User alex = userDao.getUserByUserName("alex@gmail.com");
+        assertThat(alex).isNull();
+    }
+
+    @Test
+    public void findAllUsers_Contain() throws Exception {
+        List<User> allUsers = userDao.findAllUsers();
+        assertThat(allUsers.get(2)).isEqualToComparingFieldByField(new User("remy@gmail.com", "USER"));
+//        assertThat(allUsers).contains(new User("remy@gmail.com", "USER"));
     }
 }
